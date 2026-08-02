@@ -42,3 +42,45 @@
 #include <iostream>
 using namespace std;
 
+int calculateSum(int arr[], int size) {
+    int sum = 0;
+    for (int i = 0; i < size; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+double calculateAverage(int arr[],int size) {
+    return (double)calculateSum(arr, size) / size;
+}
+int findMax(int arr[], int size) {
+    int maxVal =arr[0];
+    for (int i = 1; i < size; i++){
+        if (arr[i] > maxVal) {
+            maxVal = arr[i];
+        }
+    }
+    return maxVal;
+}
+
+int main() {
+    int count;
+    cout << "How many numbers? ";
+    cin >> count;
+
+    if (count <= 0) {
+        cout << "Error: Number of elements must be positive." << endl;
+        return 1;
+    }
+
+    int arr[count];
+    for (int i = 0; i < count; i++) {
+        cout << "Enter number " << (i + 1) << ": ";
+        cin >> arr[i];
+    }
+    cout << "\nResults:" << endl;
+    cout << "Sum:     " << calculateSum(arr, count) << endl;
+    cout << "Average: " << calculateAverage(arr, count) << endl;
+    cout << "Maximum: " << findMax(arr, count) << endl;
+    cout << "Minimum: " << findMin(arr, count) << endl;
+    return 0;
+}

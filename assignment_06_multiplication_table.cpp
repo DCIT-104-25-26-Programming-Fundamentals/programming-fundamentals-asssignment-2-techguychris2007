@@ -55,5 +55,64 @@
 // =============================================================================
 
 #include <iostream>
+#include <iomanip>
+#include <string>
 using namespace std;
+
+void printMultiplicationTable(int num) {
+    cout << "Multiplication Table for " << num << ":" << endl;
+    for (int i = 1; i <= 12; i++) {
+        cout << num << "  x  " << left << setw(3) << i << "=  " << (num * i) << endl;
+    }
+}
+
+void printTablesUpToN(int n) {
+    for (int num = 1; num <= n; num++) {
+        printMultiplicationTable(num);
+        if (num < n) {
+            cout << string(29, '-') << endl;
+        }
+    }
+}
+
+int main() {
+    int choice;
+    cout << "=== MULTIPLICATION TABLE GENERATOR ===" << endl;
+    cout << "1. Single Table (Part A)" << endl;
+    cout << "2. Tables from 1 to N (Part B - Bonus)" << endl;
+    cout << "Enter your choice (1-2): ";
+    cin >> choice;
+
+    if (choice == 1) {
+        int number;
+        cout << "Enter a number: ";
+        cin >> number;
+
+        if (number <= 0) {
+            cout << "Error: Number must be a positive integer." << endl;
+            return 1;
+        }
+
+        cout << endl;
+        printMultiplicationTable(number);
+
+    } else if (choice == 2) {
+        int n;
+        cout << "Enter N: ";
+        cin >> n;
+
+        if (n <= 0) {
+            cout << "Error: N must be a positive integer." << endl;
+            return 1;
+        }
+
+        cout << endl;
+        printTablesUpToN(n);
+
+    } else {
+        cout << "Invalid choice!" << endl;
+    }
+
+    return 0;
+}
 

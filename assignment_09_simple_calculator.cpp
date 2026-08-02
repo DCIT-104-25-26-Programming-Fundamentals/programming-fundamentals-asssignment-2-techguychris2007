@@ -73,3 +73,95 @@
 #include <cmath>
 using namespace std;
 
+double addNumbers(double a, double b) {
+    return a + b;
+}
+
+double subtractNumbers(double a, double b) {
+    return a - b;
+}
+
+double multiplyNumbers(double a, double b) {
+    return a * b;
+}
+
+double divideNumbers(double a, double b) {
+    return a / b;
+}
+
+double modulusNumbers(double a, double b) {
+    return fmod(a, b);
+}
+
+double exponentNumbers(double base, double exponent) {
+    return pow(base, exponent);
+}
+
+void readTwoNumbers(double& a, double& b) {
+    cout << "Enter first number : ";
+    cin >> a;
+    cout << "Enter second number: ";
+    cin >> b;
+}
+
+int main() {
+    int choice;
+    cout << fixed << setprecision(2);
+
+    while (true) {
+        cout << "\n============================" << endl;
+        cout << "     SIMPLE CALCULATOR" << endl;
+        cout << "============================" << endl;
+        cout << "1. Addition" << endl;
+        cout << "2. Subtraction" << endl;
+        cout << "3. Multiplication" << endl;
+        cout << "4. Division" << endl;
+        cout << "5. Modulus" << endl;
+        cout << "6. Exponentiation" << endl;
+        cout << "7. Quit" << endl;
+        cout << "Select an operation (1-7): ";
+        cin >> choice;
+
+        if (choice == 7) {
+            cout << "Goodbye!" << endl;
+            break;
+        }
+
+        if (choice < 1 || choice > 6) {
+            cout << "Error: Invalid choice. Please select a number between 1 and 7." << endl;
+            continue;
+        }
+
+        double a, b;
+        readTwoNumbers(a, b);
+
+        if ((choice == 4 || choice == 5) && b == 0) {
+            cout << "Error: Cannot divide by zero." << endl;
+            continue;
+        }
+
+        switch (choice) {
+            case 1:
+                cout << "Result: " << a << " + " << b << " = " << addNumbers(a, b) << endl;
+                break;
+            case 2:
+                cout << "Result: " << a << " - " << b << " = " << subtractNumbers(a, b) << endl;
+                break;
+            case 3:
+                cout << "Result: " << a << " * " << b << " = " << multiplyNumbers(a, b) << endl;
+                break;
+            case 4:
+                cout << "Result: " << a << " / " << b << " = " << divideNumbers(a, b) << endl;
+                break;
+            case 5:
+                cout << "Result: " << a << " % " << b << " = " << modulusNumbers(a, b) << endl;
+                break;
+            case 6:
+                cout << "Result: " << a << " ^ " << b << " = " << exponentNumbers(a, b) << endl;
+                break;
+        }
+    }
+
+    return 0;
+}
+
